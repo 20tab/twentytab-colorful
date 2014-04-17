@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 from colorful import VERSION
 
-github_url = 'https://github.com/charettes/django-colorful'
+github_url = 'https://github.com/20tab/twentytab-colorful'
 
 setup(
     name='django-colorful',
@@ -15,7 +15,7 @@ setup(
     author='Simon Charette',
     author_email='charette.s@gmail.com',
     requires=[
-        'Django (>=1.2)',
+        'Django (>=1.6)',
     ],
     packages=find_packages(),
     include_package_data=True,
