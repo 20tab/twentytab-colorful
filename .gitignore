@@ -31,3 +31,4 @@ _$*
 build/
 dist/
 django_colorful.egg-info
+twentytab_colorful.egg-info

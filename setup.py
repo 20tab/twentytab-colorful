@@ -7,7 +7,7 @@ from colorful import VERSION
 github_url = 'https://github.com/20tab/twentytab-colorful'
 
 setup(
-    name='django-colorful',
+    name='twentytab-colorful',
     version='.'.join(str(v) for v in VERSION),
     description='An extension to the Django web framework that provides database and form color fields',
     long_description=open('README.markdown').read(),
