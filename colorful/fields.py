@@ -7,20 +7,22 @@ from widgets import ColorFieldWidget
 
 RGB_REGEX = re.compile('^#?((?:[0-F]{3}){1,2})$', re.IGNORECASE)
 
+
 class RGBColorField(CharField):
 
-    widget = ColorFieldWidget
+    #widget = ColorFieldWidget
 
     def __init__(self, *args, **kwargs):
         kwargs['max_length'] = 7
+        self.default_value = kwargs.pop("default_value", None)
         super(RGBColorField, self).__init__(*args, **kwargs)
 
     def formfield(self, **kwargs):
         kwargs.update({
-                       'form_class': RegexField,
-                       'widget': self.widget,
-                       'regex': RGB_REGEX
-                       })
+                      'form_class': RegexField,
+                      'widget': ColorFieldWidget({'value': self.default_value}),
+                      'regex': RGB_REGEX,
+                      })
         return super(RGBColorField, self).formfield(**kwargs)
 
 try:

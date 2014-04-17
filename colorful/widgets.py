@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from django.forms.widgets import TextInput
-from django.utils.safestring import SafeUnicode
+from django.utils.safestring import SafeText
 
 try:
     url = settings.STATIC_URL
@@ -11,14 +11,18 @@ except AttributeError:
     except AttributeError:
         url = ''
 
+
 class ColorFieldWidget(TextInput):
     class Media:
         css = {
-            'all': ("%scolorful/colorPicker.css" % url,)
+            'all': ("{0}colorful/colorPicker.css".format(url),)
         }
-        js  = ("%scolorful/jQuery.colorPicker.js" % url,)
+        js = ("{0}colorful/jquery.colorPicker.js".format(url),)
 
     input_type = 'color'
+
+    # def __init__(self, *args, **kwargs):
+    #     super(ColorFieldWidget, self).__init__(*args, **kwargs)
 
     def render_script(self, id):
         return u'''<script type="text/javascript">
@@ -35,6 +39,6 @@ class ColorFieldWidget(TextInput):
 
     def render(self, name, value, attrs={}):
         if not 'id' in attrs:
-            attrs['id'] = "#id_%s" % name
+            attrs['id'] = "#id_{}".format(name)
         render = super(ColorFieldWidget, self).render(name, value, attrs)
-        return SafeUnicode(u"%s%s" % (render, self.render_script(attrs['id'])))
+        return SafeText(u"{}{}".format(render, self.render_script(attrs['id'])))
