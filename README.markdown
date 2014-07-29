@@ -1,3 +1,11 @@
+====================
+NO LONGER MAINTAINED
+====================
+Since master branch is now mantained this one will not be anymore 
+
+please use this: https://github.com/charettes/django-colorful
+
+
 twentytab-colorful
 ================
 
